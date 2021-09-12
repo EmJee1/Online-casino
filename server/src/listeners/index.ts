@@ -13,7 +13,7 @@ export type eventHandler = (io: ioSocketType) => void
 const initializeSocketEvents = (io: ioSocketType): void => {
 	readdirSync(__dirname)
 		.filter(file => file.endsWith('.evt.ts') || file.endsWith('evt.js'))
-		.map(file =>
+		.forEach(file =>
 			import(join(__dirname, file))
 				.then(eventImport => eventImport.default(io))
 				.catch(({ message }) => {

@@ -1,7 +1,7 @@
 import { ioSocketType } from '.'
 
-const onConnectedEvent = (socket: ioSocketType): void => {
+const onMessageEvent = (socket: ioSocketType): void => {
 	socket.on('message', msg => console.log(`[${socket.id}][message] ${msg}`))
 }
 
-export default onConnectedEvent
+export default onMessageEvent
