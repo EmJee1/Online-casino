@@ -1,14 +1,12 @@
 import { Knex } from 'knex'
 
-export async function up(knex: Knex): Promise<void> {
-	knex.schema.createTable('users', table => {
-		table.bigIncrements().unsigned().primary()
+export const up = async (knex: Knex): Promise<Knex.SchemaBuilder> =>
+	knex.schema.createTable('users', (table: Knex.TableBuilder) => {
+		table.increments('id').primary()
 		table.string('email').unique().notNullable()
-		table.string('username').notNullable()
+		table.string('username').unique().notNullable()
 		table.timestamps(true, true)
 	})
-}
 
-export async function down(knex: Knex): Promise<void> {
+export const down = async (knex: Knex): Promise<Knex.SchemaBuilder> =>
 	knex.schema.dropTableIfExists('users')
-}
