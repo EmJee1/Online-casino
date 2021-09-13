@@ -3,7 +3,7 @@ import { io } from 'socket.io-client'
 
 const App = () => {
 	useEffect(() => {
-		const socket = io('localhost:80')
+		const socket = io('localhost:8080')
 		socket.emit('message', 'This is my socket message!')
 	}, [])
 
