@@ -1,5 +1,7 @@
 import { useEffect } from 'react'
 import { io } from 'socket.io-client'
+import Login from './views/Login'
+import './util/axios'
 
 const App = () => {
 	useEffect(() => {
@@ -9,7 +11,7 @@ const App = () => {
 
 	return (
 		<div>
-			<p>Hello, World!</p>
+			<Login />
 		</div>
 	)
 }
