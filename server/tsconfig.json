@@ -10,7 +10,8 @@
 		"baseUrl": ".",
 		"paths": {
 			"*": ["node_modules/*"]
-		}
+		},
+		"types": ["./src/models/environment/enviroment.d.ts"]
 	},
 	"include": ["src/**/*"]
 }
