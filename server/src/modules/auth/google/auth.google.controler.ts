@@ -1,11 +1,10 @@
 import { OAuth2Client } from 'google-auth-library'
 import { Request, Response } from 'express'
+import { envOrFail } from '../../../utils/env-helpers'
 
-const { GOOGLE_CLIENT_ID } = process.env
+const { GOOGLE_CLIENT_ID } = envOrFail('GOOGLE_CLIENT_ID')
 
-const GoogleClient = new OAuth2Client({
-	clientId: GOOGLE_CLIENT_ID,
-})
+const GoogleClient = new OAuth2Client({ clientId: GOOGLE_CLIENT_ID })
 
 export default async (req: Request, res: Response): Promise<Response> => {
 	const { idToken } = req.body
