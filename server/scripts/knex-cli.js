@@ -1,14 +1,16 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { exec } = require('child_process')
+const { join } = require('path')
 
+const rootDir = process.cwd()
 const [, , COMMAND_TYPE] = process.argv
 const MIGRATIONS_DIRECTORY = {
-	src: './src/database/migrations',
-	dist: './dist/database/migrations',
+	src: join(rootDir, '/src/database/migrations'),
+	dist: join(rootDir, '/dist/database/migrations'),
 }
 const KNEXFILE = {
-	src: './src/database/knexfile.ts',
-	dist: './dist/database/knexfile.js',
+	src: join(rootDir, '/src/database/knexfile.ts'),
+	dist: join(rootDir, '/dist/database/knexfile.js'),
 }
 
 const log = (err, stdout) => {

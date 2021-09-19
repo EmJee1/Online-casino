@@ -6,7 +6,7 @@
 	"scripts": {
 		"start:prod": "tsc && node ./dist/app.js",
 		"start:dev": "nodemon ./src/app.ts",
-		"db": "node ./knex-cli.js",
+		"db": "node ./scripts/knex-cli.js",
 		"build": "tsc"
 	},
 	"keywords": [

@@ -1,4 +1,20 @@
+import { config } from 'dotenv'
+import { join } from 'path'
+
 type envHelpersReturnType = { [key: string]: string }
+
+const checkOrFixEnvInjection = () => {
+	if (process.env.INJECTION_SUCCESSFUL) return
+
+	config({ path: join(__dirname, '../../.env') })
+
+	if (process.env.INJECTION_SUCCESSFUL) return
+
+	console.error(
+		'[err] environment variables were not imported successfully, you are missing the INJECTION_SUCCESSFUL variable'
+	)
+	process.exit(1)
+}
 
 const extractEnvVar = (varname: string, required?: boolean) => {
 	const extracted = process.env[varname]
@@ -18,6 +34,7 @@ const extractEnvVar = (varname: string, required?: boolean) => {
 }
 
 export const envOrFail = (...vars: string[]): envHelpersReturnType => {
+	checkOrFixEnvInjection()
 	const output: envHelpersReturnType = {}
 
 	vars.forEach(item => {
@@ -28,6 +45,7 @@ export const envOrFail = (...vars: string[]): envHelpersReturnType => {
 }
 
 export const env = (...vars: string[]): envHelpersReturnType => {
+	checkOrFixEnvInjection()
 	const output: envHelpersReturnType = {}
 
 	vars.forEach(item => {
