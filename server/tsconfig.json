@@ -11,7 +11,7 @@
 		"paths": {
 			"*": ["node_modules/*"]
 		},
-		"types": ["./src/models/environment/enviroment.d.ts"]
+		"types": ["./src/models/environment/environment.d.ts"]
 	},
 	"include": ["src/**/*"]
 }

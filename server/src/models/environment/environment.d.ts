@@ -1,5 +1,10 @@
 declare namespace NodeJS {
 	export interface ProcessEnv {
-		HOST: string
+		INJECTION_SUCCESSFUL: string
+		DB_DEV_CLIENT: string
+		DB_DEV_HOST: string
+		DB_DEV_USER: string
+		DB_DEV_PASSWORD: string
+		DB_DEV_DATABASE: string
 	}
 }

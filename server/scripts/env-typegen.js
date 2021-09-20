@@ -1,4 +1,6 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
+const { writeFileSync } = require('fs')
+const { join } = require('path')
 const result = require('dotenv').config()
 
 if (result.error) {
@@ -6,4 +8,18 @@ if (result.error) {
 	process.exit(1)
 }
 
-console.log(result.parsed)
+const parsedWithTypes = Object.entries(result.parsed)
+	.map(([key]) => `\t\t${key}: string`)
+	.join('\n')
+
+const fileContents = `declare namespace NodeJS {
+	export interface ProcessEnv {
+${parsedWithTypes}
+	}
+}
+`
+
+writeFileSync(
+	join(process.cwd(), '/src/models/environment', 'environment.d.ts'),
+	fileContents
+)
