@@ -20,6 +20,6 @@ ${parsedWithTypes}
 `
 
 writeFileSync(
-	join(process.cwd(), '/src/models/environment', 'environment.d.ts'),
+	join(process.cwd(), '/src/models/environment', 'index.d.ts'),
 	fileContents
 )
