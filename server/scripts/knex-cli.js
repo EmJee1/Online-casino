@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 const { exec } = require('child_process')
 const { join } = require('path')
+const log = require('./helpers/log')
 
 const rootDir = process.cwd()
 const [, , COMMAND_TYPE] = process.argv
@@ -11,18 +12,6 @@ const MIGRATIONS_DIRECTORY = {
 const KNEXFILE = {
 	src: join(rootDir, '/src/database/knexfile.ts'),
 	dist: join(rootDir, '/dist/database/knexfile.js'),
-}
-
-const log = (err, stdout) => {
-	console.log('~~~ \n')
-	if (err) {
-		console.log('[err]')
-		console.error(err)
-	}
-	if (stdout) {
-		console.log('[stdout]')
-		console.log(stdout)
-	}
 }
 
 if (COMMAND_TYPE === 'make:migration') {
