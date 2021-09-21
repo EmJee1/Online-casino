@@ -9,6 +9,7 @@
 		"db": "node ./scripts/knex-cli.js",
 		"parse:env": "node ./scripts/env-typegen.js",
 		"launch:wt": "node ./scripts/launch-wt.js",
+		"lint": "eslint ./src/ --ext .ts",
 		"build": "tsc"
 	},
 	"keywords": [

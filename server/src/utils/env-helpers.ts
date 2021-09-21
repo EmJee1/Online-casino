@@ -4,11 +4,15 @@ import { join } from 'path'
 type envHelpersReturnType = { [key: string]: string }
 
 const checkOrFixEnvInjection = () => {
-	if (process.env.INJECTION_SUCCESSFUL) return
+	if (process.env.INJECTION_SUCCESSFUL) {
+		return
+	}
 
 	config({ path: join(__dirname, '../../.env') })
 
-	if (process.env.INJECTION_SUCCESSFUL) return
+	if (process.env.INJECTION_SUCCESSFUL) {
+		return
+	}
 
 	console.error(
 		'[err] environment variables were not imported successfully, you are missing the INJECTION_SUCCESSFUL variable'
