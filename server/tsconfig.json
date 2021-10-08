@@ -11,7 +11,11 @@
 		"paths": {
 			"*": ["node_modules/*"]
 		},
-		"types": ["./src/models/environment", "./src/models/knex"]
+		"types": [
+			"./src/models/environment",
+			"./src/models/knex",
+			"./src/models/express"
+		]
 	},
 	"include": ["src/**/*"]
 }
