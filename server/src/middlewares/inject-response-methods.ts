@@ -10,7 +10,7 @@ const injectResponseMethods = (
 			return res.sendStatus(status)
 		}
 
-		return res.status(status).json({ data })
+		return res.status(status).json(data)
 	}
 	res.clientError = (status, ...errors) => {
 		console.log(status)
