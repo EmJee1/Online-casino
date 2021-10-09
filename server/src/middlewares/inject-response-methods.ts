@@ -10,11 +10,24 @@ const injectResponseMethods = (
 			return res.sendStatus(status)
 		}
 
-		return res.json({ data }).status(status)
+		return res.status(status).json({ data })
 	}
-	res.clientError = (status, ...errors) =>
-		res
-			.json({
+	res.clientError = (status, ...errors) => {
+		console.log(status)
+
+		return res.status(status).json({
+			errors: errors.map(err => {
+				if (err instanceof Error) {
+					return err.message
+				}
+
+				return err
+			}),
+		})
+	}
+	res.serverError = (status, ...errors) => {
+		if (errors) {
+			return res.status(status).json({
 				errors: errors.map(err => {
 					if (err instanceof Error) {
 						return err.message
@@ -23,20 +36,6 @@ const injectResponseMethods = (
 					return err
 				}),
 			})
-			.status(status)
-	res.serverError = (status, ...errors) => {
-		if (errors) {
-			return res
-				.json({
-					errors: errors.map(err => {
-						if (err instanceof Error) {
-							return err.message
-						}
-
-						return err
-					}),
-				})
-				.status(status)
 		}
 
 		return res.sendStatus(status)
