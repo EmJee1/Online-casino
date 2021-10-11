@@ -1,9 +1,11 @@
-import LoginWithGoogle from '../components/GoogleLogin'
+import EmailLogin from '../components/EmailLogin'
+import GoogleLogin from '../components/GoogleLogin'
 
 const Login = () => {
 	return (
 		<div>
-			<LoginWithGoogle />
+			<GoogleLogin />
+			<EmailLogin />
 		</div>
 	)
 }

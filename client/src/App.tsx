@@ -1,16 +1,17 @@
+import { useSelector } from 'react-redux'
 import { useEffect } from 'react'
-import { io } from 'socket.io-client'
+import { RootState } from './redux/store'
 import Login from './views/Login'
 import './util/axios'
 
 const App = () => {
-	useEffect(() => {
-		const socket = io('localhost:8080')
-		socket.emit('message', 'This is my socket message!')
-	}, [])
+	const user = useSelector((state: RootState) => state.user)
+
+	useEffect(() => console.log(user), [user])
 
 	return (
 		<div>
+			{user && <h1>{user.username} is logged in!</h1>}
 			<Login />
 		</div>
 	)

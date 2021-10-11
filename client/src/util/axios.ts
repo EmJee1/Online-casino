@@ -9,8 +9,8 @@ axios.interceptors.request.use((config: AxiosRequestConfig) => {
 })
 
 axios.interceptors.response.use((response: AxiosResponse<any>) => {
-	if (response?.data?.token)
-		localStorage.setItem('token', response.data.token)
+	if (response.data?.token)
+		localStorage.setItem('token', response.data?.token)
 
 	return response
 })
