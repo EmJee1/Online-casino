@@ -27,7 +27,7 @@ if (COMMAND_TYPE === 'make:migration') {
 	}
 
 	exec(
-		`knex migrate:make ${MIGRATION_NAME} -x ts --migrations-directory ${MIGRATIONS_DIRECTORY}`,
+		`knex migrate:make ${MIGRATION_NAME} -x ts --migrations-directory ${MIGRATIONS_DIRECTORY.src}`,
 		log
 	)
 }
