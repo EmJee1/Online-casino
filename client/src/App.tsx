@@ -1,18 +1,21 @@
-import { useSelector } from 'react-redux'
-import { useEffect } from 'react'
-import { RootState } from './redux/store'
+import { useContext } from 'react'
+import UserContext from './context/user-context'
 import Login from './views/Login'
 import './util/axios'
+import useAuthentication from './hooks/use-authentication'
 
 const App = () => {
-	const user = useSelector((state: RootState) => state.user)
+	const { user } = useContext(UserContext)
+	const { logoutUser } = useAuthentication()
 
-	useEffect(() => console.log(user), [user])
+	if (!user) {
+		return <Login />
+	}
 
 	return (
 		<div>
 			{user && <h1>{user.username} is logged in!</h1>}
-			<Login />
+			<button onClick={logoutUser}>Logout</button>
 		</div>
 	)
 }

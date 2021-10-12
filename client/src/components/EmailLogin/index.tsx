@@ -1,20 +1,19 @@
 import { FormEvent, useState } from 'react'
 import axios from 'axios'
 import { LoginResponse, RequestError } from '../../models/responses'
-import { useDispatch } from '../../redux/store'
-import { loginUser } from '../../redux/user'
+import useAuthentication from '../../hooks/use-authentication'
 
 const EmailLogin = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const dispatch = useDispatch()
+	const { loginUser } = useAuthentication()
 
 	const onSubmit = async (e: FormEvent) => {
 		e.preventDefault()
 
-		await axios
+		axios
 			.post<LoginResponse>('/auth/email/login', { email, password })
-			.then(({ data }) => dispatch(loginUser(data.user)))
+			.then(({ data }) => loginUser(data.user))
 			.catch((err: RequestError) => {
 				if ('response' in err) {
 					console.log(err.response?.data.errors)

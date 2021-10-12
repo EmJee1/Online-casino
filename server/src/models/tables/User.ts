@@ -5,4 +5,5 @@ export interface IUser extends HasTimestamps, HasPrimaryId {
 	email: string
 	username: string
 	password: string
+	auth_provider: 'google' | 'email'
 }

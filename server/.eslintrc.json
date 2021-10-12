@@ -65,7 +65,7 @@
 		"function-paren-newline": 0,
 		"no-plusplus": 0,
 		"no-console": 0,
-		"camelcase": ["error", { "allow": ["created_at", "updated_at"] }],
+		"camelcase": 0,
 		"import/prefer-default-export": 0
 	}
 }
