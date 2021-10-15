@@ -2,14 +2,15 @@ import { FormEvent, useState } from 'react'
 import axios from 'axios'
 import { LoginResponse, RequestError } from '../../models/responses'
 import useAuthentication from '../../hooks/use-authentication'
+import TextInput from '../TextInput'
 
 const EmailLogin = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
 	const { loginUser } = useAuthentication()
 
-	const onSubmit = async (e: FormEvent) => {
-		e.preventDefault()
+	const onSubmit = async ({ preventDefault }: FormEvent) => {
+		preventDefault()
 
 		axios
 			.post<LoginResponse>('/auth/email/login', { email, password })
@@ -23,17 +24,18 @@ const EmailLogin = () => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<label htmlFor="email">Email</label>
-			<input
-				type="email"
+			<TextInput
+				label="email"
+				email
 				value={email}
-				onChange={e => setEmail(e.target.value)}
+				updateState={setEmail}
 			/>
-			<label htmlFor="password">Password</label>
-			<input
-				type="password"
+			<TextInput
+				password
+				label="password"
+				placeholder="......"
 				value={password}
-				onChange={e => setPassword(e.target.value)}
+				updateState={setPassword}
 			/>
 			<input type="submit" value="Log in" />
 		</form>
