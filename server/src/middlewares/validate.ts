@@ -13,7 +13,7 @@ const validate =
 					}
 				})
 			} catch (err) {
-				return res.status(422).json({ msg: err.message })
+				return res.clientError(422, err)
 			}
 
 			return next()
