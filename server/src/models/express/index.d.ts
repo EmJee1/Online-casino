@@ -1,4 +1,7 @@
 declare namespace Express {
+	export interface Request {
+		user: import('../tables/User').IUser
+	}
 	export interface Response {
 		success: (
 			status: import('../../utils/status-codes').SuccessfulHttpStatus,
