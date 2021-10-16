@@ -1,20 +1,20 @@
 import { FormEvent, useState } from 'react'
 import axios from 'axios'
 import { LoginResponse, RequestError } from '../../models/responses'
-import { useDispatch } from '../../redux/store'
-import { loginUser } from '../../redux/user'
+import useAuthentication from '../../hooks/use-authentication'
+import TextInput from '../TextInput'
 
 const EmailLogin = () => {
 	const [email, setEmail] = useState('')
 	const [password, setPassword] = useState('')
-	const dispatch = useDispatch()
+	const { loginUser } = useAuthentication()
 
-	const onSubmit = async (e: FormEvent) => {
-		e.preventDefault()
+	const onSubmit = async ({ preventDefault }: FormEvent) => {
+		preventDefault()
 
-		await axios
+		axios
 			.post<LoginResponse>('/auth/email/login', { email, password })
-			.then(({ data }) => dispatch(loginUser(data.user)))
+			.then(({ data }) => loginUser(data.user))
 			.catch((err: RequestError) => {
 				if ('response' in err) {
 					console.log(err.response?.data.errors)
@@ -24,17 +24,18 @@ const EmailLogin = () => {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<label htmlFor="email">Email</label>
-			<input
-				type="email"
+			<TextInput
+				label="email"
+				email
 				value={email}
-				onChange={e => setEmail(e.target.value)}
+				updateState={setEmail}
 			/>
-			<label htmlFor="password">Password</label>
-			<input
-				type="password"
+			<TextInput
+				password
+				label="password"
+				placeholder="......"
 				value={password}
-				onChange={e => setPassword(e.target.value)}
+				updateState={setPassword}
 			/>
 			<input type="submit" value="Log in" />
 		</form>

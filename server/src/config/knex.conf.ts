@@ -1,7 +1,7 @@
 import { Knex, knex } from 'knex'
 import knexfile from '../database/knexfile'
 
-const mode = 'development'
+const mode = process.env.NODE_ENV as 'development'
 
 const db = knex(knexfile[mode])
 

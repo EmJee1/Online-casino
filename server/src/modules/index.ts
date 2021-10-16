@@ -1,16 +1,23 @@
 import { lstatSync, readdirSync } from 'fs'
 import { Express } from 'express'
 import { join } from 'path'
+import isAuthenticated from '../middlewares/is-authenticated'
 
 const initializeModules = (app: Express): void => {
 	const registerRouter = async (importPath: string) => {
 		const router = await import(importPath)
 
+		const handlers = []
+
 		if (router.prefix) {
-			app.use(router.prefix, router.default)
-		} else {
-			app.use(router.default)
+			handlers.push(router.prefix)
 		}
+		if (router.authenticated) {
+			handlers.push(isAuthenticated)
+		}
+		handlers.push(router.default)
+
+		app.use(...handlers)
 	}
 
 	const scanDirectory = (path: string) =>

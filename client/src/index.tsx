@@ -1,14 +1,16 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { Provider } from 'react-redux'
-import { store } from './redux/store'
+import { BrowserRouter } from 'react-router-dom'
 import App from './App'
+import AuthSupplier from './components/AuthSupplier'
 
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<App />
-		</Provider>
+		<BrowserRouter>
+			<AuthSupplier>
+				<App />
+			</AuthSupplier>
+		</BrowserRouter>
 	</React.StrictMode>,
 	document.getElementById('root')
 )
