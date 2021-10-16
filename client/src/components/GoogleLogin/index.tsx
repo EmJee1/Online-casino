@@ -1,11 +1,11 @@
 import axios from 'axios'
 import {
-	GoogleLogin,
+	GoogleLogin as LoginWithGoogle,
 	GoogleLoginResponse,
 	GoogleLoginResponseOffline,
 } from 'react-google-login'
 
-const LoginWithGoogle = () => {
+const GoogleLogin = () => {
 	const handleLogin = async (
 		googleData: GoogleLoginResponse | GoogleLoginResponseOffline
 	) => {
@@ -23,7 +23,7 @@ const LoginWithGoogle = () => {
 	}
 
 	return (
-		<GoogleLogin
+		<LoginWithGoogle
 			clientId="798849429177-aa40t54b9mti1ejkrjnh7a1v6861q3o2.apps.googleusercontent.com"
 			buttonText="Sign in with Google"
 			onSuccess={handleLogin}
@@ -32,4 +32,4 @@ const LoginWithGoogle = () => {
 	)
 }
 
-export default LoginWithGoogle
+export default GoogleLogin

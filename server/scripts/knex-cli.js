@@ -46,6 +46,20 @@ if (COMMAND_TYPE === 'make:seed') {
 	)
 }
 
+if (COMMAND_TYPE === 'make:seed') {
+	const SEED_NAME = process.argv[3]
+
+	if (!SEED_NAME) {
+		console.error('> Please provide a name for the seed')
+		process.exit(1)
+	}
+
+	exec(
+		`cd ${DATABASE_DIRECTORY.src} && knex seed:make ${SEED_NAME} -x ts`,
+		log
+	)
+}
+
 if (COMMAND_TYPE === 'migrate:latest') {
 	console.log('> Compiling before running migrations\n')
 	exec(`tsc && knex migrate:latest --esm --knexfile ${KNEXFILE.dist}`, log)
