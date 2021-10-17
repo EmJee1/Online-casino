@@ -19,6 +19,8 @@
 	"author": "EmJee1",
 	"license": "ISC",
 	"dependencies": {
+		"@dicebear/avatars": "^4.9.1",
+		"@dicebear/big-smile": "^4.9.1",
 		"bcrypt": "^5.0.1",
 		"cors": "^2.8.5",
 		"cross-env": "^7.0.3",

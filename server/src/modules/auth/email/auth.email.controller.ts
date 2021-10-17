@@ -17,8 +17,14 @@ export const register = async (
 
 	try {
 		const hashed = await hash(req.body.password, 10)
-		await db.table('users').insert({ ...req.body, password: hashed })
-		return res.success(204)
+
+		const [id] = await db
+			.table('users')
+			.insert({ ...req.body, password: hashed })
+
+		const token = signJwt({ id }, JSON_WEBTOKEN_SECRET)
+
+		return res.success(201, { token })
 	} catch {
 		return res.serverError(500, 'Unexpected server error')
 	}

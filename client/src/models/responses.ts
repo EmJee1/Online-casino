@@ -4,6 +4,8 @@ export interface PersonalProfileResponse {
 	id: number
 	email: string
 	username: string
+	avatar: string
+	completedRegistration: boolean
 }
 
 export interface LoginResponse {

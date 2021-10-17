@@ -16,7 +16,7 @@ export default async (req: Request, res: Response): Promise<Response> => {
 	const { idToken } = req.body
 
 	const ticket = await GoogleClient.verifyIdToken({ idToken })
-	const { name: username, email } = ticket.getPayload()
+	const { email } = ticket.getPayload()
 
 	const user = await db.table('users').where({ email }).first()
 
@@ -33,7 +33,7 @@ export default async (req: Request, res: Response): Promise<Response> => {
 
 	const [id] = await db
 		.table('users')
-		.insert({ email, username, auth_provider: 'google' })
+		.insert({ email, auth_provider: 'google' })
 
 	return res.success(200, {
 		token: signJwt({ id }, JSON_WEBTOKEN_SECRET),
