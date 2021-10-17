@@ -20,7 +20,7 @@ export const register = async (
 		await db.table('users').insert({ ...req.body, password: hashed })
 		return res.success(204)
 	} catch {
-		return res.serverError(500, 'Unexpected error occurred')
+		return res.serverError(500, 'Unexpected server error')
 	}
 }
 

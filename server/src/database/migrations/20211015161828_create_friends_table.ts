@@ -4,18 +4,20 @@ export const up = async (knex: Knex): Promise<Knex.SchemaBuilder> =>
 	knex.schema.createTable('friends', (table: Knex.TableBuilder) => {
 		table.increments('id').primary()
 		table
-			.integer('first_user')
+			.integer('requester')
 			.unsigned()
 			.references('id')
 			.inTable('users')
 			.notNullable()
 		table
-			.integer('second_user')
+			.integer('requested')
 			.unsigned()
 			.references('id')
 			.inTable('users')
 			.notNullable()
-		table.enum('status', ['INVITED', 'ACCEPTED', 'BLOCKED']).notNullable()
+		table
+			.enum('status', ['INVITED', 'ACCEPTED', 'BLOCKED', 'IGNORED'])
+			.notNullable()
 		table.timestamps(true, true)
 	})
 

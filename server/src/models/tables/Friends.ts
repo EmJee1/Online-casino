@@ -5,10 +5,11 @@ export enum FriendStatus {
 	Invited = 'INVITED',
 	Accepted = 'ACCEPTED',
 	Blocked = 'BLOCKED',
+	Ignored = 'IGNORED',
 }
 
 export interface IFriends extends HasTimestamps, HasPrimaryId {
-	first_user: number
-	second_user: number
+	requester: number
+	requested: number
 	status: FriendStatus
 }
