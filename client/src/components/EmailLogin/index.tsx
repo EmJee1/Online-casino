@@ -25,15 +25,14 @@ const EmailLogin = () => {
 	return (
 		<form onSubmit={onSubmit}>
 			<TextInput
-				label="email"
+				label="Email"
 				email
 				value={email}
 				updateState={setEmail}
 			/>
 			<TextInput
 				password
-				label="password"
-				placeholder="......"
+				label="Password"
 				value={password}
 				updateState={setPassword}
 			/>

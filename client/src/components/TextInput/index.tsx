@@ -27,18 +27,19 @@ const TextInput = ({
 	if (className) classes.push(className)
 
 	const type = email ? 'email' : password ? 'password' : 'text'
+	id = id ?? label.replaceAll(' ', '-').toLowerCase()
 
 	return (
 		<div className={classes.join(' ')}>
 			{label && (
-				<label htmlFor={id || label} className="block">
+				<label htmlFor={id} className="block">
 					{label}
 				</label>
 			)}
 			<input
 				type={type}
 				value={value}
-				id={id || label}
+				id={id}
 				className="border border-yellow-300 rounded"
 				placeholder={placeholder}
 				onChange={e => {
