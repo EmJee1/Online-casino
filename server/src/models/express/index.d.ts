@@ -12,7 +12,7 @@ declare namespace Express {
 			...errors: (string | Error)[]
 		) => import('express').Response<any, Record<string, any>>
 		serverError: (
-			status: import('../../utils/status-codes').ServerErrorHttpStatus,
+			status?: import('../../utils/status-codes').ServerErrorHttpStatus,
 			...errors: (string | Error)[]
 		) => import('express').Response<any, Record<string, any>>
 	}

@@ -26,7 +26,7 @@ export const register = async (
 
 		return res.success(201, { token })
 	} catch {
-		return res.serverError(500, 'Unexpected server error')
+		return res.serverError()
 	}
 }
 

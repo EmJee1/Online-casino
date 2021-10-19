@@ -10,11 +10,11 @@ const EmailRegistration = () => {
 	const [repeatPassword, setRepeatPassword] = useState('')
 	const { setUserState } = useContext(UserContext)
 
-	const onSubmit = ({ preventDefault }: FormEvent) => {
-		preventDefault()
+	const onSubmit = (e: FormEvent) => {
+		e.preventDefault()
 
 		axios
-			.post('/auth/email/register')
+			.post('/auth/email/register', { email, password })
 			.then(() => setUserState(UserStates.PartlyRegistered))
 			.catch((err: RequestError) => {
 				if ('response' in err) {
@@ -43,6 +43,7 @@ const EmailRegistration = () => {
 				value={repeatPassword}
 				updateState={setRepeatPassword}
 			/>
+			<input type="submit" value="Register" />
 		</form>
 	)
 }

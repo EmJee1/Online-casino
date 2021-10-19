@@ -31,13 +31,15 @@ export default async (req: Request, res: Response): Promise<Response> => {
 		return res.clientError(401, `Please sign in with ${user.auth_provider}`)
 	}
 
-	const [id] = await db
-		.table('users')
-		.insert({ email, auth_provider: 'google' })
+	try {
+		const [id] = await db
+			.table('users')
+			.insert({ email, auth_provider: 'google' })
 
-	return res.success(200, {
-		token: signJwt({ id }, JSON_WEBTOKEN_SECRET),
-		user: new UserResource(await db.table('users').where({ id }).first())
-			.full,
-	})
+		return res.success(200, {
+			token: signJwt({ id }, JSON_WEBTOKEN_SECRET),
+		})
+	} catch (err) {
+		return res.serverError()
+	}
 }

@@ -12,6 +12,7 @@ const injectResponseMethods = (
 
 		return res.status(status).json(data)
 	}
+
 	res.clientError = (status, ...errors) => {
 		console.log(status)
 
@@ -25,7 +26,12 @@ const injectResponseMethods = (
 			}),
 		})
 	}
+
 	res.serverError = (status, ...errors) => {
+		if (!status) {
+			return res.serverError(500, 'Unexpected server error')
+		}
+
 		if (errors) {
 			return res.status(status).json({
 				errors: errors.map(err => {

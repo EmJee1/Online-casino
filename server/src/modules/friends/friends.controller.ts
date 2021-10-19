@@ -22,7 +22,7 @@ export const request = async (
 			)
 			.first()
 	} catch {
-		return res.serverError(500, 'Unexpected server error')
+		return res.serverError()
 	}
 
 	if (friendRelation) {
@@ -36,7 +36,7 @@ export const request = async (
 			status: FriendStatus.Invited,
 		})
 	} catch {
-		return res.serverError(500, 'Unexpected server error')
+		return res.serverError()
 	}
 
 	return res.success(204)
@@ -59,7 +59,7 @@ export const accept = async (
 			})
 			.update({ status: FriendStatus.Accepted })
 	} catch {
-		return res.serverError(500, 'Unexpected server error')
+		return res.serverError()
 	}
 
 	if (!updated) {

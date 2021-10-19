@@ -13,6 +13,10 @@ export interface LoginResponse {
 	user: PersonalProfileResponse
 }
 
+export interface FinishProfileResponse {
+	user: PersonalProfileResponse
+}
+
 export interface ErrorBodyResponse {
 	errors: string[]
 }

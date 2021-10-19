@@ -1,7 +1,7 @@
 import { useState } from 'react'
-import EmailLogin from '../components/EmailLogin'
-import EmailRegistration from '../components/EmailRegistration'
-import GoogleLogin from '../components/GoogleLogin'
+import EmailLogin from '../../components/EmailLogin'
+import EmailRegistration from '../../components/EmailRegistration'
+import GoogleLogin from '../../components/GoogleLogin'
 
 const Login = () => {
 	const [login, setLogin] = useState(true)

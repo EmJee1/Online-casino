@@ -1,4 +1,5 @@
 import { Request, Response } from 'express'
+import { UserResource } from '../../../resources/user.resource'
 import db from '../../../config/knex.conf'
 
 export const checkAvailability = async (
@@ -11,7 +12,7 @@ export const checkAvailability = async (
 	try {
 		usernameCheck = await db.table('users').where({ username }).first()
 	} catch {
-		return res.serverError(500, 'Unexpected server error')
+		return res.serverError()
 	}
 
 	if (usernameCheck) {
@@ -33,9 +34,13 @@ export const registerUsername = async (
 
 	try {
 		await db.table('users').where({ id: req.user.id }).update({ username })
-	} catch {
-		return res.serverError(500, 'Unexpected server error')
-	}
 
-	return res.success(204)
+		return res.success(200, {
+			user: new UserResource(
+				await db.table('users').where({ id: req.user.id }).first()
+			).full,
+		})
+	} catch {
+		return res.serverError()
+	}
 }

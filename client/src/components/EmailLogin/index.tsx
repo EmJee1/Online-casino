@@ -9,8 +9,8 @@ const EmailLogin = () => {
 	const [password, setPassword] = useState('')
 	const { loginUser } = useAuthentication()
 
-	const onSubmit = async ({ preventDefault }: FormEvent) => {
-		preventDefault()
+	const onSubmit = async (e: FormEvent) => {
+		e.preventDefault()
 
 		axios
 			.post<LoginResponse>('/auth/email/login', { email, password })
