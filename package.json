@@ -1,0 +1,18 @@
+{
+	"name": "social-drinkers",
+	"version": "1.0.0",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/EmJee1/social-drinkers.git"
+	},
+	"author": "EmJee1",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/EmJee1/social-drinkers/issues"
+	},
+	"homepage": "https://github.com/EmJee1/social-drinkers#readme",
+	"workspaces": [
+		"server",
+		"web"
+	]
+}

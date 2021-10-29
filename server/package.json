@@ -1,7 +1,7 @@
 {
-	"name": "casino",
+	"name": "server",
 	"version": "1.0.0",
-	"description": "Server for an online casino application",
+	"description": "Social-Drinkers server",
 	"main": "dist/app.js",
 	"scripts": {
 		"start:prod": "tsc && cross-env NODE_ENV=production node ./dist/app.js",
