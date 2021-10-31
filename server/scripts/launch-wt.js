@@ -12,9 +12,14 @@ const terminals = [
 		tabColor: '#2ecc71',
 	},
 	{
-		path: join(process.cwd(), '../client'),
+		path: join(process.cwd(), '../web'),
 		title: 'react - start',
 		tabColor: '#3498db',
+	},
+	{
+		path: join(process.cwd(), '../validation'),
+		title: 'validation - dev',
+		tabColor: '#dc143c',
 	},
 ]
 
