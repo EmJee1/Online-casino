@@ -51,10 +51,7 @@
 		"nonblock-statement-body-position": 0,
 		"implicit-arrow-linebreak": 0,
 		"func-names": ["error", "never"],
-		"import/no-extraneous-dependencies": [
-			"error",
-			{ "devDependencies": true }
-		],
+		"import/no-extraneous-dependencies": 0,
 		"@typescript-eslint/no-explicit-any": 0,
 		"lines-between-class-members": [
 			"error",

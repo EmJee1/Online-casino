@@ -13,10 +13,8 @@ const injectResponseMethods = (
 		return res.status(status).json(data)
 	}
 
-	res.clientError = (status, ...errors) => {
-		console.log(status)
-
-		return res.status(status).json({
+	res.clientError = (status, ...errors) =>
+		res.status(status).json({
 			errors: errors.map(err => {
 				if (err instanceof Error) {
 					return err.message
@@ -25,7 +23,6 @@ const injectResponseMethods = (
 				return err
 			}),
 		})
-	}
 
 	res.serverError = (status, ...errors) => {
 		if (!status) {
