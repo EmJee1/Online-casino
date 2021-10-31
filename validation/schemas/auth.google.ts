@@ -1,6 +1,6 @@
 import Joi from 'joi'
 
-export default {
+export const googleSignIn = {
 	body: Joi.object({
 		idToken: Joi.string()
 			.required()

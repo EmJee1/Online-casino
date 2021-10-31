@@ -1,5 +1,5 @@
 import { Router } from 'express'
-import * as validation from 'validation/src/schemas/auth.email'
+import * as validation from 'validation/schemas/auth.email'
 import * as controller from './auth.email.controller'
 import validate from '../../../middlewares/validate'
 

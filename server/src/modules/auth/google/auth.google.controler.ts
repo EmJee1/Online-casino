@@ -12,7 +12,10 @@ const { GOOGLE_CLIENT_ID, JSON_WEBTOKEN_SECRET } = envOrFail(
 
 const GoogleClient = new OAuth2Client({ clientId: GOOGLE_CLIENT_ID })
 
-export default async (req: Request, res: Response): Promise<Response> => {
+export const googleSignIn = async (
+	req: Request,
+	res: Response
+): Promise<Response> => {
 	const { idToken } = req.body
 
 	const ticket = await GoogleClient.verifyIdToken({ idToken })

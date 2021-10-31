@@ -1,7 +1,7 @@
 import { Router } from 'express'
-import validate from '../../middlewares/validate'
+import * as validation from 'validation/schemas/friends'
 import * as controller from './friends.controller'
-import * as validation from './friends.validation'
+import validate from '../../middlewares/validate'
 
 const router = Router()
 
