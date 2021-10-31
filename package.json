@@ -9,8 +9,7 @@
 	"scripts": {
 		"dev": "run-p dev:*",
 		"dev:client": "cd client && yarn start",
-		"dev:server": "cd server && npm run start:dev",
-		"dev:validation": "cd validation && npm run dev"
+		"dev:server": "cd server && npm run start:dev"
 	},
 	"license": "ISC",
 	"bugs": {

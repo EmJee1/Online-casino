@@ -16,11 +16,6 @@ const terminals = [
 		title: 'react - start',
 		tabColor: '#3498db',
 	},
-	{
-		path: join(process.cwd(), '../validation'),
-		title: 'validation - dev',
-		tabColor: '#dc143c',
-	},
 ]
 
 const command = terminals
