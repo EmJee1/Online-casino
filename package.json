@@ -8,7 +8,7 @@
 	"author": "EmJee1",
 	"scripts": {
 		"dev": "run-p dev:*",
-		"dev:client": "cd client && yarn start",
+		"dev:client": "cd web && yarn start",
 		"dev:server": "cd server && npm run start:dev"
 	},
 	"license": "ISC",
