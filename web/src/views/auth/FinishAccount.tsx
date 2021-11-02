@@ -1,8 +1,8 @@
 import { FormEvent, useState } from 'react'
 import axios from 'axios'
-import { FinishProfileResponse, RequestError } from '../../models/responses'
-import useAuthentication from '../../hooks/use-authentication'
-import TextInput from '../../components/TextInput'
+import { FinishProfileResponse, RequestError } from '@models/responses'
+import useAuthentication from '@hooks/use-authentication'
+import TextInput from '@components/TextInput'
 
 const FinishAccount = () => {
 	const [username, setUsername] = useState('')

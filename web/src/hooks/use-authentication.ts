@@ -1,6 +1,6 @@
 import { useContext } from 'react'
-import UserContext, { UserStates } from '../context/user-context'
-import { PersonalProfileResponse } from '../models/responses'
+import UserContext, { UserStates } from '@context/user-context'
+import { PersonalProfileResponse } from '@models/responses'
 
 const useAuthentication = () => {
 	const { setUser, setUserState } = useContext(UserContext)

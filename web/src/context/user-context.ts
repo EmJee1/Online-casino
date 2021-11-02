@@ -1,5 +1,5 @@
 import { createContext, Dispatch, SetStateAction } from 'react'
-import { PersonalProfileResponse } from '../models/responses'
+import { PersonalProfileResponse } from '@models/responses'
 
 export enum UserStates {
 	Unauthenticated = 'UNAUTHENTICATED',
